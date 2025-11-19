@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Istoric – Jurnalul Sufletului</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Istoricul Jurnalului</h1>
+
+        <div id="entriesList"></div>
+
+        <div class="center">
+            <a href="index.html" class="history-btn">← Înapoi la jurnal</a>
+        </div>
+    </div>
+
+<script>
+    function loadEntries() {
+        let entries = JSON.parse(localStorage.getItem("jurnalEntries")) || [];
+        let container = document.getElementById("entriesList");
+
+        if (entries.length === 0) {
+            container.innerHTML = "<p>Nu există încă însemnări.</p>";
+            return;
+        }
+
+        entries.reverse().forEach(entry => {
+            let date = new Date(entry.date).toLocaleDateString("ro-RO", {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            });
+
+            container.innerHTML += `
+                <div class="card">
+                    <p class="entry-date">${date}</p>
+                    <p class="entry-text">${entry.text}</p>
+                </div>
+            `;
+        });
+    }
+
+    loadEntries();
+</script>
+
+</body>
+</html>
