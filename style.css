@@ -1,0 +1,165 @@
+/* ------------------------------
+   Stil general
+---------------------------------*/
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f7e6ff; /* mov foarte deschis */
+    color: #3a0057;
+    text-align: center;
+}
+
+/* ------------------------------
+   Containerul principal
+---------------------------------*/
+.container {
+    max-width: 600px;
+    width: 90%;
+    margin: 40px auto;
+    background: white;
+    padding: 28px 20px;
+    border-radius: 22px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* ------------------------------
+   Titlu & subtitlu
+---------------------------------*/
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #7c00c3;
+}
+
+.subtitle {
+    font-size: 16px;
+    margin-bottom: 26px;
+    color: #8a4baf;
+}
+
+/* ------------------------------
+   Data
+---------------------------------*/
+.date-box {
+    display: inline-block;
+    background: #f3d9ff;
+    color: #7c00c3;
+    padding: 10px 22px;
+    border-radius: 14px;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+/* ------------------------------
+   Textarea PERFECT în centru
+---------------------------------*/
+textarea {
+    width: 100%;
+    max-width: 100%;
+    min-height: 180px;
+    padding: 16px;
+    border-radius: 14px;
+    border: 2px solid #e4c4ff;
+    background: #ffffff;
+    font-size: 16px;
+    outline: none;
+    resize: none;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* ------------------------------
+   Buton salvare
+---------------------------------*/
+button {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    background: #b45bff;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 14px;
+    border: none;
+    margin: 0 auto 25px auto;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:active {
+    background: #9800ff;
+}
+
+/* ------------------------------
+   Ultima înregistrare
+---------------------------------*/
+.title-section {
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #7c00c3;
+}
+
+.latest .card {
+    background: #f7e6ff;
+    padding: 18px;
+    border-radius: 18px;
+    margin-top: 16px;
+    text-align: left;
+}
+
+.entry-date {
+    font-weight: 600;
+    color: #7c00c3;
+    margin-bottom: 8px;
+}
+
+.entry-text {
+    font-size: 16px;
+    color: #4a0061;
+}
+
+/* ------------------------------
+   Link istoric
+---------------------------------*/
+.center {
+    margin-top: 15px;
+}
+
+.history-btn {
+    display: inline-block;
+    color: #7c00c3;
+    font-size: 17px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.history-btn:hover {
+    text-decoration: underline;
+}
+
+/* ------------------------------
+   Stil pentru istoric.html
+---------------------------------*/
+.entry-item {
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.entry-item .date {
+    font-weight: 700;
+    color: #7c00c3;
+    margin-bottom: 6px;
+}
+
+.entry-item .text {
+    color: #4a0061;
+    font-size: 16px;
+}
