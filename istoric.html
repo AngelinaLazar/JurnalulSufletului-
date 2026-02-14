@@ -6,18 +6,38 @@
     <title>Istoric – Jurnalul Sufletului</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .back-top {
+            position: sticky;
+            top: 0;
+            left: 0;
+            font-size: 26px;
+            text-decoration: none;
+            color: #a128ff;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .entry-photo{
+            width:100%;
+            margin-top:10px;
+            border-radius:10px;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container">
+
+        <!-- SAGETA SUS STANGA -->
+        <a href="index.html" class="back-top">←</a>
+
         <h1>Istoricul Jurnalului</h1>
 
         <div id="entriesList"></div>
 
-        <div class="center">
-            <a href="index.html" class="history-btn">← Înapoi la jurnal</a>
-        </div>
     </div>
 
 <script>
@@ -31,18 +51,26 @@
         }
 
         entries.reverse().forEach(entry => {
+
             let date = new Date(entry.date).toLocaleDateString("ro-RO", {
                 day: "numeric",
                 month: "long",
                 year: "numeric"
             });
 
-            container.innerHTML += `
+            let html = `
                 <div class="card">
                     <p class="entry-date">${date}</p>
-                    <p class="entry-text">${entry.text}</p>
-                </div>
+                    <p class="entry-text">${entry.text || ""}</p>
             `;
+
+            if(entry.image){
+                html += `<img src="${entry.image}" class="entry-photo">`;
+            }
+
+            html += `</div>`;
+
+            container.innerHTML += html;
         });
     }
 
