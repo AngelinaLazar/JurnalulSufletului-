@@ -19,8 +19,13 @@
 
         <textarea id="textInput" placeholder="Scrie aici gândurile tale..."></textarea>
 
+        <!-- Upload foto -->
+        <input type="file" id="photoUpload" accept="image/*">
+
+        <!-- Buton salvare -->
         <button id="saveBtn">Salvează în jurnal</button>
 
+        <!-- Buton istoric -->
         <div class="center">
             <a href="istoric.html" class="history-btn">Vezi istoricul →</a>
         </div>
@@ -35,25 +40,42 @@
             year: "numeric"
         });
 
-    // Salvare în localStorage
+    // Salvare în localStorage (text + foto)
     document.getElementById("saveBtn").addEventListener("click", () => {
         let text = document.getElementById("textInput").value.trim();
-        if (text === "") {
-            alert("Scrie ceva înainte de a salva.");
+        let photoInput = document.getElementById("photoUpload");
+        let file = photoInput.files[0];
+
+        if (text === "" && !file) {
+            alert("Scrie ceva sau adaugă o poză înainte de a salva.");
             return;
         }
 
         let entries = JSON.parse(localStorage.getItem("jurnalEntries")) || [];
 
-        entries.push({
-            text: text,
-            date: new Date().toISOString()
-        });
+        function saveEntry(imageData = null) {
+            entries.push({
+                text: text,
+                image: imageData,
+                date: new Date().toISOString()
+            });
 
-        localStorage.setItem("jurnalEntries", JSON.stringify(entries));
+            localStorage.setItem("jurnalEntries", JSON.stringify(entries));
 
-        document.getElementById("textInput").value = "";
-        alert("Salvat!");
+            document.getElementById("textInput").value = "";
+            photoInput.value = "";
+            alert("Salvat!");
+        }
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                saveEntry(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            saveEntry(null);
+        }
     });
 
     // PWA
